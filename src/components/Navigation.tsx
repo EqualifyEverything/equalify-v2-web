@@ -51,19 +51,20 @@ export const Navigation = () => {
 
     return (
         <div>
-            <div className='w-full max-w-screen-lg mx-auto bg-background p-4 pb-24 min-h-[calc(100vh_-_180px)]'>
+            <div className='w-full max-w-screen-lg mx-auto bg-background p-4 min-h-[calc(100vh_-_120px)]'>
                 <div className='flex flex-col sm:flex-row items-center justify-between mb-4'>
-                    <Link to='/' className='relative'><img className='w-[150px]' src='logo.svg' />
+                    <Link to='/' className='relative hover:opacity-50'><img className='w-[150px]' src='/logo.svg' />
                         <div className='absolute right-[-22px] top-[calc(50%_-_11px)] text-2xl font-extrabold italic text-[#7F6A00]'>v2</div>
                     </Link>
                     <div className='flex flex-row items-center gap-4'>
                         {(!authenticated ? [
                             { label: 'Log In', value: '/login' },
+                            { label: 'Sign Up', value: '/signup' },
                         ] : [
                             { label: 'Dashboard', value: '/dashboard' },
-                            { label: 'Audit', value: '/audit' },
+                            { label: 'Audits', value: '/audits' },
                             { label: 'Pages', value: '/pages' },
-                            { label: 'Log', value: '/log' },
+                            { label: 'Logs', value: '/logs' },
                             { label: 'Account', value: '/account' },
                             { label: 'Log Out', value: '/logout' },
                         ]).map(obj => <Link key={obj.value} to={obj.value} className={`hover:opacity-50 ${location.pathname === obj.value && 'font-bold'}`}>{obj.label}</Link>)}
@@ -74,7 +75,7 @@ export const Navigation = () => {
             </div>
             <div className='w-full max-w-screen-lg mx-auto py-4 flex flex-col sm:flex-row items-center justify-between'>
                 <div>© {new Date().getFullYear()} Equalify. All rights reserved</div>
-                <button onClick={() => setDarkMode(!darkMode)}>{`Switch to ${darkMode ? 'Light Mode' : 'Dark Mode'}`}</button>
+                {/* <button onClick={() => setDarkMode(!darkMode)}>{`Switch to ${darkMode ? 'Light Mode' : 'Dark Mode'}`}</button> */}
             </div>
         </div>
     )

@@ -28,16 +28,17 @@ body {
   margin: 0;
   background-color: var(--border);
   background: var(--image);
+  background-attachment: fixed;
   color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", Arial, sans-serif;
 }
 
 a {
   color: var(--link)
 }
 
-input {
-  padding: 5px 10px;
+input, select {
+  padding: 10px 10px;
   background: transparent;
   color: var(--text);
   border-color: var(--border);
@@ -45,5 +46,10 @@ input {
 }
 
 button {
-  padding: 5px 10px;
+  padding: 10px 20px;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+h1, h2, h3 {
+  margin: 0;
 }

@@ -1,18 +1,14 @@
 import { useState, useEffect } from 'react';
-import * as Auth from 'aws-amplify/auth';;
-import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import * as Auth from 'aws-amplify/auth';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useGlobalStore } from '#src/utils';
 import { useQueryClient } from '@tanstack/react-query';
 import { usePostHog } from 'posthog-js/react';
-import { IoPersonCircle } from 'react-icons/io5';
 
 export const Login = () => {
     const queryClient = useQueryClient();
-    const loading = useGlobalStore(state => state.loading);
-    const setLoading = useGlobalStore(state => state.setLoading);
-    const setAuthenticated = useGlobalStore(state => state.setAuthenticated);
+    const { loading, setLoading, setAuthenticated } = useGlobalStore();
     const [error, setError] = useState('');
-    const [checked, setChecked] = useState(true);
     const location = useLocation();
     const navigate = useNavigate();
     const posthog = usePostHog();
@@ -66,11 +62,11 @@ export const Login = () => {
         <h1 className='mx-auto'>Welcome back!</h1>
         <div className='flex flex-col'>
             <label htmlFor='email'>Email address</label>
-            <input id='email' name="email" required type="email" placeholder='johndoe@example.com'/>
+            <input id='email' name="email" required type="email" placeholder='johndoe@example.com' defaultValue={email ?? ''} />
         </div>
         <div className='flex flex-col'>
             <label htmlFor='password'>Password</label>
-            <input id='password' name="password" required type="password" placeholder='Password'/>
+            <input id='password' name="password" required type="password" placeholder='Password' />
         </div>
         <button disabled={loading} className=''>Log In</button>
         {error && <div className=''>{error}</div>}
